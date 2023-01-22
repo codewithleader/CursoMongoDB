@@ -1,0 +1,34 @@
+//! Update:
+
+const database = 'cursomongodb';
+const collection = 'users';
+
+// Select the database to use.
+use(database);
+
+// db.collection.updateOne(filter, update, options)
+db.movies.updateOne(
+  {"name": "La ballena azul"},
+  {
+    "$set": { "year": 1887 }
+  }
+);
+db.movies.find();
+
+// replaceOne(filter, replacement, options) reemplaza todo lo que está en el documento por lo indicado en el segundo parametro.
+// Actualizar values
+db.movies.replaceOne({"name": "Star Wars"}, {"name": "Guerra de las Galaxias", "year": 1978});
+
+// Actualizar keys
+db.movies.replaceOne({"name": "El Libro de la Selva"}, {"peli": "El Libro de la Selva"});
+
+db.movies.replaceOne({"peli": "El Libro de la Selva"}, {"year": 1988});
+
+db.movies.replaceOne({"year": 1988}, {"name": "El Libro de la Selva", "year": 1988});
+
+// Actualizar pero si el documento no existe entonces proceder a crear un nuevo documento: upsert: true
+db.movies.replaceOne(
+  {"name": "No Existe"},
+  {"name": "Iron Man", "year": 2010},
+  { upsert: true } // upsert en false es igual que omitir esta opcion
+);

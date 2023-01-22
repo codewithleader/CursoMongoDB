@@ -1,0 +1,26 @@
+//! Read:
+
+const database = 'cursomongodb';
+const collection = 'users';
+
+// Select the database to use.
+use(database);
+
+// Find(): All
+db.users.find();
+
+db.users.find({"name": "Antonio"});
+
+// Find({...}, {...}): En el segundo parámetro indicamos qué propiedad deseamos excluir (Dos opciones)
+
+// Opcion#1: Colocamos en 0 las propiedades que queremos excluir
+db.users.find({"name": "Antonio"}, {"_id": 0});
+
+// Opcion#2: Colocamos en 1 las propiedades que deseamos traer.
+db.users.find({"name": "Antonio"}, {"email": 1}); // incluye el _id
+
+// Sin _id:
+db.users.find({"name": "Antonio"}, {"_id": 0, "email": 1});
+
+// Buscar por el ObjectId de Mongo (_id)
+db.users.findOne({"_id": ObjectId("63cca205e7bbc1ac988da870")});

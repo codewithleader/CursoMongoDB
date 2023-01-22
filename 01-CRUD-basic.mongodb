@@ -1,71 +1,38 @@
 // Curso MongoDB
 
-
+const database = 'cursomongodb';
+const collection = 'users';
 // Select the database to use.
-use('cursomongodb');
+use(database);
+db.createCollection(collection);
 
+// Este codigo funciona pero hay que comentarlo porque deja de funcionar el autocompletado de comandos.
 // show dbs;
 
-//! Create: InsertOne({...})
-db.client.insertOne({"name": "Antonio", "email": "elisperezmusic@gmail.com"});
+//! CREATE:
+// InsertOne({...})
+db.users.insertOne({
+  "_id": 1,
+  "name": "Antonio",
+  "email": "elisperezmusic@gmail.com"
+});
 
-db.movies.insertOne({
-  "name": "Star Wars"
+// Si no especificamos el _id, Mongo le asigna uno.
+db.users.insertOne({
+  "name": "Darianny"
 });
 
 // Create: InsertMany([{...},{...}])
-db.movies.insertMany([
-  {
-    "name": "El Libro de la Selva",
-    "year": "1987"
-  },
-  {
-    "name": "La ballena azul"
-  }
+db.users.insertMany([
+  { "_id" : 2, "name" : "Miguel"},
+  { "_id" : 3, "name" : "Gabriel" },
+  { "_id" : 4, "name" : "Rafael" }
 ]);
 
-//! Read:
-// Find(): All
-db.movies.find();
-// Find({...}): El primer parametro es para Buscar por propiedad
-db.movies.find({"name": "La ballena azul"});
-// Find({...}, {...}): En el segundo parámetro indicamos qué propiedad deseamos excluir (Dos opciones)
-// Opcion#1: Colocamos en 0 las propiedades que queremos excluir
-db.movies.find({"name": "El Libro de la Selva"}, {"_id": 0});
-// Opcion#2: Colocamos en 1 las propiedades que deseamos traer.
-db.movies.find({"name": "El Libro de la Selva"}, {"year": 1}); // incluye el _id
-// Sin _id:
-db.movies.find({"name": "El Libro de la Selva"}, {"_id": 0, "year": 1});
-// Buscar por _id
-db.movies.findOne({"_id": ObjectId("63cc7cb3be87125cad64cf2e")});
+db.users.find();
 
 //! UPDATE
-// db.collection.updateOne(filter, update, options)
-db.movies.updateOne(
-  {"name": "La ballena azul"},
-  {
-    "$set": { "year": 1887 }
-  }
-);
-db.movies.find();
 
-// replaceOne(filter, replacement, options) reemplaza todo lo que está en el documento por lo indicado en el segundo parametro.
-// Actualizar values
-db.movies.replaceOne({"name": "Star Wars"}, {"name": "Guerra de las Galaxias", "year": 1978});
-
-// Actualizar keys
-db.movies.replaceOne({"name": "El Libro de la Selva"}, {"peli": "El Libro de la Selva"});
-
-db.movies.replaceOne({"peli": "El Libro de la Selva"}, {"year": 1988});
-
-db.movies.replaceOne({"year": 1988}, {"name": "El Libro de la Selva", "year": 1988});
-
-// Actualizar pero si el documento no existe entonces proceder a crear un nuevo documento: upsert: true
-db.movies.replaceOne(
-  {"name": "No Existe"},
-  {"name": "Iron Man", "year": 2010},
-  { upsert: true } // upsert en false es igual que omitir esta opcion
-);
 
 
 //! DELETE
