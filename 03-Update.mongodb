@@ -1,4 +1,7 @@
 //! Update:
+// Use the updateOne() method to update one document.
+
+// Use the updateMany() method to update more than one document.
 
 const database = 'cursomongodb';
 const collection = 'users';
@@ -7,28 +10,43 @@ const collection = 'users';
 use(database);
 
 // db.collection.updateOne(filter, update, options)
-db.movies.updateOne(
-  {"name": "La ballena azul"},
+db.users.updateOne(
+  {"_id": 2},
   {
-    "$set": { "year": 1887 }
+    "$set": { "email": "migue@google.com" }
   }
 );
-db.movies.find();
 
-// replaceOne(filter, replacement, options) reemplaza todo lo que está en el documento por lo indicado en el segundo parametro.
-// Actualizar values
-db.movies.replaceOne({"name": "Star Wars"}, {"name": "Guerra de las Galaxias", "year": 1978});
-
-// Actualizar keys
-db.movies.replaceOne({"name": "El Libro de la Selva"}, {"peli": "El Libro de la Selva"});
-
-db.movies.replaceOne({"peli": "El Libro de la Selva"}, {"year": 1988});
-
-db.movies.replaceOne({"year": 1988}, {"name": "El Libro de la Selva", "year": 1988});
-
-// Actualizar pero si el documento no existe entonces proceder a crear un nuevo documento: upsert: true
-db.movies.replaceOne(
-  {"name": "No Existe"},
-  {"name": "Iron Man", "year": 2010},
-  { upsert: true } // upsert en false es igual que omitir esta opcion
+db.users.updateOne(
+  {"_id": 2},
+  {
+    "$set": { "type": 5554443322 }
+  }
 );
+
+
+db.users.updateOne(
+  {"_id": 2},
+  [
+    { $set: { "phone": 123456, "email": "miguel@gmail.com" } },
+    { $unset: [ "type", "age" ] }
+  ]
+);
+
+// ! UpdateMany
+
+
+db.users.find();
+
+//! replaceOne(filter, replacement, options)
+//  reemplaza todo lo que está en el documento por lo indicado en el segundo parametro.
+// Actualizar values
+db.users.replaceOne({"_id": 3}, {"email": "gabriel@google.com"});
+
+// Reemplazar pero si el documento no existe entonces proceder a crear un nuevo documento: upsert: true
+db.users.replaceOne(
+  {"name": "No Existe"},
+  {"name": "Jesus", "email": "jesu@google.com"},
+  { upsert: true }
+);
+// Configurar upsert: true insertaría el documento si no se encontrara ninguna coincidencia. upsert en false es igual que omitir esta opcion

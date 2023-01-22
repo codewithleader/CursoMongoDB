@@ -1,4 +1,8 @@
 //! Read:
+// Use the findOne() method to read one document.
+// si varios documentos satisfacen la consulta, este método devuelve el primer documento según el orden natural que refleja el orden de los documentos en el disco.
+
+// Use the find() method to read more than one document.
 
 const database = 'cursomongodb';
 const collection = 'users';
@@ -6,7 +10,17 @@ const collection = 'users';
 // Select the database to use.
 use(database);
 
-// Find(): All
+//! FindOne
+db.users.findOne(
+  { "_id" : 2 },
+  { "_id" : 0 } // Sin la propiedad _id
+);
+
+// Buscar por el ObjectId de Mongo (_id)
+db.users.findOne({"_id": ObjectId("63cca205e7bbc1ac988da870")});
+
+
+//! Find
 db.users.find();
 
 db.users.find({"name": "Antonio"});
@@ -21,6 +35,3 @@ db.users.find({"name": "Antonio"}, {"email": 1}); // incluye el _id
 
 // Sin _id:
 db.users.find({"name": "Antonio"}, {"_id": 0, "email": 1});
-
-// Buscar por el ObjectId de Mongo (_id)
-db.users.findOne({"_id": ObjectId("63cca205e7bbc1ac988da870")});

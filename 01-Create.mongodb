@@ -17,6 +17,11 @@ db.users.insertOne({
   "email": "elisperezmusic@gmail.com"
 });
 
+db.users.insertOne({
+  "name": "Antonio",
+  "email": "antonio@gmail.com"
+});
+
 // Si no especificamos el _id, Mongo le asigna uno.
 db.users.insertOne({
   "name": "Darianny"
@@ -29,13 +34,4 @@ db.users.insertMany([
   { "_id" : 4, "name" : "Rafael" }
 ]);
 
-db.users.find();
-
-//! UPDATE
-
-
-
-//! DELETE
-// The drop() command destroys all data from a collection.
-// Make sure you run it against the correct database and collection.
-// db.collection.drop();
+// db.users.find();
