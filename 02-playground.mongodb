@@ -1,5 +1,0 @@
-use('cursomongodb');
-
-db.client.insertOne({"name": "Antonio", "email": "elisperezmusic@gmail.com"});
-
-show databases;
