@@ -20,7 +20,7 @@ db.users.updateOne(
 db.users.updateOne(
   {"_id": 2},
   {
-    "$set": { "type": 5554443322 }
+    "$set": { "type": 5554443322, "age": 13 }
   }
 );
 

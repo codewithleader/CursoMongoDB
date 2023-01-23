@@ -6,7 +6,9 @@ use('cursomongodb');
 // El cursor es el resultado de una consulta
 db.users.find();
 
+// ? METODOS DEL CURSOR
 
+// count()
 // Contar los objetos del cursor:
 db.users.find().count();
 
@@ -14,4 +16,5 @@ db.users.find().count();
 db.users.find().limit(2);
 
 // Acceder a una posición del cursor en específico
-db.users.find()[1]; // Aquí no sirve.
+// db.users.find()[1]; // v4.
+db.users.find().toArray()[0]; // v6
