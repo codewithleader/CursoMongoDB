@@ -2,14 +2,12 @@
 
 // Create/Select the DataBase to use.
 const database = 'cursomongodb';
-use(database); // opcion#1
-// use cursomongodb; // opcion#2 mas facil pero daña el autocompletado.
+use(database);
 
 // Create/Select collection Opt#1
 const collection = 'users';
 db.createCollection(collection);
-// Opt#2: Simplemente insertar un registro y si no existe la collection la crea.
-// db.users.insertOne({...})
+
 
 // Mostrar bases de datos existentes:
 show('dbs');

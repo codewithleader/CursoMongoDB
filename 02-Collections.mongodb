@@ -2,8 +2,13 @@
 // https://www.mongodb.com/docs/manual/reference/method/js-collection/
 
 //! Crear Collection
-// db.createCollection(name, options)
-// Leer la documentación para aprender todas las "options"
+
+// Opción #1: Simplemente insertar un registro y si no existe "myCollection" la crea.
+db.myCollection.insertOne({"name": "John"});
+
+// Opción #2: db.createCollection(name, options)
+// Leer la documentación para aprender todas las "options":
+// https://www.mongodb.com/docs/manual/reference/method/db.createCollection/
 
 // Example:
 db.createCollection( "myCollection",
@@ -30,4 +35,3 @@ db.createCollection( "myCollection",
      writeConcern: <document>
    }
 );
-// https://www.mongodb.com/docs/manual/reference/method/db.createCollection/
