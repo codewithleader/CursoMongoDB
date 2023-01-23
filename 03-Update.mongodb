@@ -24,7 +24,8 @@ db.users.updateOne(
   }
 );
 
-
+// $set: Crea nuevos fields
+// $unset: elimina fields
 db.users.updateOne(
   {"_id": 2},
   [
@@ -34,16 +35,28 @@ db.users.updateOne(
 );
 
 // ! UpdateMany
-
+// $set: Crea nuevos fields
+// $unset: elimina fields
+db.users.updateMany(
+   { "name": "Antonio" },
+   [
+      { $set: { "isRepeated": true } },
+      { $unset: "email" }
+   ]
+);
 
 db.users.find();
 
 //! replaceOne(filter, replacement, options)
-//  reemplaza todo lo que está en el documento por lo indicado en el segundo parametro.
-// Actualizar values
-db.users.replaceOne({"_id": 3}, {"email": "gabriel@google.com"});
+//  reemplazar o ignorar
+// si no existe no hace nada.
+db.users.replaceOne(
+  {"_id": 3},
+  {"email": "gabriel@google.com"}
+);
 
-// Reemplazar pero si el documento no existe entonces proceder a crear un nuevo documento: upsert: true
+// Reemplazar o crear.
+// si no existe lo crea
 db.users.replaceOne(
   {"name": "No Existe"},
   {"name": "Jesus", "email": "jesu@google.com"},

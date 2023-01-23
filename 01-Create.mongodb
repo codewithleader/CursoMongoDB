@@ -19,7 +19,7 @@ db.users.insertOne({
 
 db.users.insertOne({
   "name": "Antonio",
-  "email": "antonio@gmail.com"
+  "email": "antonio@google.com"
 });
 
 // Si no especificamos el _id, Mongo le asigna uno.

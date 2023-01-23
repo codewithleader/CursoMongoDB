@@ -1,0 +1,17 @@
+// ¿Qué es el cursor?
+// Un puntero al conjunto de resultados de un consulta. Los clientes pueden iterar a través de un cursor para recuperar resultados. De forma predeterminada, los cursores que no se abren dentro de una sesión caducan automáticamente después de 10 minutos de inactividad. Los cursores abiertos en una sesión se cierran con el final o el tiempo de espera de la sesión. Consulte Iterar un cursor en mongosh.
+
+use('cursomongodb');
+
+// El cursor es el resultado de una consulta
+db.users.find();
+
+
+// Contar los objetos del cursor:
+db.users.find().count();
+
+// limit()
+db.users.find().limit(2);
+
+// Acceder a una posición del cursor en específico
+db.users.find()[1]; // Aquí no sirve.
