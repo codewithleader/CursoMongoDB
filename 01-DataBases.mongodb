@@ -1,0 +1,11 @@
+// Metodos para las DataBases:
+// https://www.mongodb.com/docs/manual/reference/method/js-database/
+
+//! Crear DataBase
+
+// #1: Nombre de la base de datos:
+const database = 'cursomongodb';
+
+// #2: Select the database to use:
+use(database); // opcion#1
+// use cursomongodb; // opcion#2 mas facil pero daña el autocompletado.

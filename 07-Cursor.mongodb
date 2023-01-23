@@ -7,14 +7,18 @@ use('cursomongodb');
 db.users.find();
 
 // ? METODOS DEL CURSOR
+// ! Todos los metodos del Cursor:
+// https://www.mongodb.com/docs/manual/reference/method/js-cursor/
 
-// count()
-// Contar los objetos del cursor:
+// cursor.count(): Contar los objetos del cursor:
 db.users.find().count();
 
-// limit()
+// cursor.limit()
 db.users.find().limit(2);
 
-// Acceder a una posición del cursor en específico
+// cursos.toArray()[0]: Acceder a una posición del cursor en específico
 // db.users.find()[1]; // v4.
 db.users.find().toArray()[0]; // v6
+
+// cursor.hasNext(): devuelve "true" si el cursor devuelto por la consulta db.collection.find() puede iterar más para devolver más documentos.
+db.users.find().hasNext();

@@ -1,22 +1,24 @@
 // Curso MongoDB
 
+// Create/Select the DataBase to use.
 const database = 'cursomongodb';
-const collection = 'users';
-// Select the database to use.
 use(database); // opcion#1
 // use cursomongodb; // opcion#2 mas facil pero daña el autocompletado.
 
-// Crear collection Opt#1
+// Create/Select collection Opt#1
+const collection = 'users';
 db.createCollection(collection);
 // Opt#2: Simplemente insertar un registro y si no existe la collection la crea.
 // db.users.insertOne({...})
 
-// Este codigo funciona pero hay que comentarlo porque deja de funcionar el autocompletado de comandos.
-// show dbs; // Opción #1
-show('dbs'); // Opción #2
+// Mostrar bases de datos existentes:
+show('dbs');
+// show dbs; // daña el autocompletado.
+
+// Mostrar datos en la collection "users":
+db.users.find();
 
 //! CREATE:
-// InsertOne({...})
 db.users.insertOne({
   "_id": 1,
   "name": "Antonio",
@@ -33,11 +35,9 @@ db.users.insertOne({
   "name": "Darianny"
 });
 
-// Create: InsertMany([{...},{...}])
+//! Create Multiple:
 db.users.insertMany([
   { "_id" : 2, "name" : "Miguel"},
   { "_id" : 3, "name" : "Gabriel" },
-  { "_id" : 4, "name" : "Rafael" }
+  { "name" : "Rafael" }
 ]);
-
-db.users.find();
