@@ -3,6 +3,7 @@
 
 //! Crear Collection
 // db.createCollection(name, options)
+// Leer la documentación para aprender todas las "options"
 
 // Example:
 db.createCollection( "myCollection",
