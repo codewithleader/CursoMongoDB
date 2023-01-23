@@ -12,3 +12,7 @@ use(database);
 
 // Opción #2: Simplemente agregar el nombre en use:
 use('myDataBase');
+
+// Mostrar bases de datos existentes:
+show('dbs');
+// show dbs; // daña el autocompletado.

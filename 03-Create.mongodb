@@ -8,7 +8,6 @@ use(database);
 const collection = 'users';
 db.createCollection(collection);
 
-
 // Mostrar bases de datos existentes:
 show('dbs');
 // show dbs; // daña el autocompletado.

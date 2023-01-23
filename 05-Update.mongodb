@@ -63,3 +63,24 @@ db.users.replaceOne(
   { upsert: true }
 );
 // Configurar upsert: true insertaría el documento si no se encontrara ninguna coincidencia. upsert en false es igual que omitir esta opcion
+
+//! Field Update Operators
+// https://www.mongodb.com/docs/v6.0/reference/operator/update-field/
+
+// $currentDate: establece el valor de un campo en la fecha actual, ya sea como una fecha o una marca de tiempo.
+
+// $inc: Incrementa el valor del campo por la cantidad especificada.
+
+// $min: solo actualiza el campo si el valor especificado es menor que el valor del campo existente.
+
+// $max: solo actualiza el campo si el valor especificado es mayor que el valor del campo existente.
+
+// $mul: Multiplica el valor del campo por la cantidad especificada.
+
+// $renombrar: Cambia el nombre de un campo.
+
+// $set: Establece el valor de un campo en un documento.
+
+// $setOnInsert: Establece el valor de un campo si una actualización resulta en una inserción de un documento. No tiene efecto en las operaciones de actualización que modifican documentos existentes.
+
+// $unset: elimina el campo especificado de un documento.
