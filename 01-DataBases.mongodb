@@ -4,8 +4,11 @@
 //! Crear DataBase
 
 // #1: Nombre de la base de datos:
-const database = 'cursomongodb';
+const database = 'myDataBase';
 
 // #2: Select the database to use:
-use(database); // opcion#1
-// use cursomongodb; // opcion#2 mas facil pero daña el autocompletado.
+use(database);
+// use myDataBase; // daña el autocompletado.
+
+// Opción #2: Simplemente agregar el nombre en use:
+use('myDataBase');
